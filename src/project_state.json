@@ -1,0 +1,197 @@
+{
+  "schemaVersion": "1.0.0",
+  "projectStateVersion": 5,
+  "summary": "Build 'LIA' — a desktop (and mobile-friendly UI) voice assistant/virtual concierge with natural conversation, Hindi-first female voice, long-term memory, extensible tool integrations (incl. MCP), and capabilities for app/web control, media playback, camera-based interactions, and social messaging/posting automation.",
+  "architectural_notes": [
+    "Do not embed or request third-party 'free' API keys; require user-provided keys and secure storage.",
+    "Social automation and device-control features may require platform-specific permissions and may be restricted by third-party TOS; design with explicit user consent and modular capability toggles."
+  ],
+  "known_issues": [],
+  "isFixRequest": false,
+  "existing_features": [
+    {
+      "id": "feature-create-a-mobile-friendly-web-ui-for-a-voice-assistant-named-lia-with-a-clear-chat-layout-messages-input-mic-control-and-assistant-persona-details-assistant-name-shown-as-lia-and-the-user-addressed-as-mj",
+      "title": "Create a mobile-friendly web UI for a voice assistant named “LIA” with a clear chat layout (messages, input, mic control) and assistant persona details: assistant name shown as “LIA”, and the user addressed as “Mj”.",
+      "reqIds": [
+        "REQ-1"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-implement-browser-based-hindi-first-speech-features-a-speech-to-text-using-the-web-speech-api-or-best-available-browser-api-with-hindi-as-the-default-recognition-language-and-b-text-to-speech-using-the-browser-tts-voices-with-a-female-voice-preference-when-available-provide-settings-to-switch-language-voice-but-default-to-hindi",
+      "title": "Implement browser-based Hindi-first speech features: (a) speech-to-text using the Web Speech API (or best-available browser API) with Hindi as the default recognition language, and (b) text-to-speech using the browser TTS voices with a female voice preference when available; provide settings to switch language/voice but default to Hindi.",
+      "reqIds": [
+        "REQ-2"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-persistent-conversation-memory-across-sessions-store-conversation-history-in-the-motoko-backend-per-authenticated-user-internet-identity-and-load-recent-conversation-context-when-the-user-returns",
+      "title": "Add persistent conversation memory across sessions: store conversation history in the Motoko backend per authenticated user (Internet Identity), and load recent conversation context when the user returns.",
+      "reqIds": [
+        "REQ-3"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-provide-a-simple-concierge-tools-framework-that-lets-lia-invoke-built-in-tools-based-on-explicit-user-commands-no-third-party-llm-include-at-minimum-1-web-search-on-demand-2-open-a-website-url-3-play-a-youtube-video-by-opening-a-youtube-search-query-link-and-4-a-basic-help-command-that-lists-available-tools-and-examples",
+      "title": "Provide a simple “concierge tools” framework that lets LIA invoke built-in tools based on explicit user commands (no third-party LLM): include at minimum (1) web search on demand, (2) open a website URL, (3) play a YouTube video by opening a YouTube search/query link, and (4) a basic “help” command that lists available tools and examples.",
+      "reqIds": [
+        "REQ-4"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-implement-an-extensible-custom-tool-registry-ui-for-adding-simple-user-defined-tools-name-description-url-template-that-lia-can-run-via-explicit-commands-store-these-tool-definitions-per-user-in-the-backend",
+      "title": "Implement an extensible custom-tool registry UI for adding simple user-defined tools (name + description + URL template) that LIA can run via explicit commands; store these tool definitions per user in the backend.",
+      "reqIds": [
+        "REQ-5"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-an-anime-style-lia-avatar-to-the-ui-with-speaking-listening-states-e-g-idle-vs-talking-using-generated-static-assets-the-avatar-must-not-be-photorealistic",
+      "title": "Add an anime-style LIA avatar to the UI with speaking/listening states (e.g., idle vs. talking) using generated static assets; the avatar must not be photorealistic.",
+      "reqIds": [
+        "REQ-6"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-an-in-browser-camera-preview-panel-so-the-user-can-see-themselves-with-permission-alongside-the-avatar-include-basic-controls-for-start-stop-camera-and-camera-selection-if-multiple-devices-are-available",
+      "title": "Add an in-browser camera preview panel so the user can see themselves (with permission), alongside the avatar; include basic controls for start/stop camera and camera selection if multiple devices are available.",
+      "reqIds": [
+        "REQ-7"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-ensure-auto-start-when-opening-the-website-behavior-within-browser-constraints-on-first-visit-show-a-single-call-to-action-to-enable-microphone-and-optionally-camera-after-user-enables-subsequent-visits-auto-initialize-lia-ui-and-restore-the-last-session-without-showing-any-activity-log-screen",
+      "title": "Ensure “auto-start when opening the website” behavior within browser constraints: on first visit, show a single call-to-action to enable microphone (and optionally camera); after user enables, subsequent visits auto-initialize LIA UI and restore the last session without showing any activity log screen.",
+      "reqIds": [
+        "REQ-8"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-apply-one-coherent-distinctive-visual-theme-colors-typography-layout-appropriate-for-a-virtual-concierge-assistant-and-use-it-consistently-across-all-pages-components-avoid-blue-purple-as-the-primary-palette",
+      "title": "Apply one coherent, distinctive visual theme (colors, typography, layout) appropriate for a “virtual concierge” assistant, and use it consistently across all pages/components; avoid blue+purple as the primary palette.",
+      "reqIds": [
+        "REQ-9"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-ensure-lia-reliably-speaks-text-to-speech-only-for-newly-generated-assistant-responses-not-when-conversation-history-is-initially-loaded-restored",
+      "title": "Ensure LIA reliably speaks (text-to-speech) only for newly generated assistant responses, not when conversation history is initially loaded/restored.",
+      "reqIds": [
+        "REQ-10"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-if-the-browser-does-not-support-speech-synthesis-surface-a-clear-non-blocking-message-in-settings-indicating-that-voice-output-is-unavailable-in-the-current-browser-while-keeping-the-rest-of-the-app-functional",
+      "title": "If the browser does not support Speech Synthesis, surface a clear, non-blocking message in Settings indicating that voice output is unavailable in the current browser, while keeping the rest of the app functional.",
+      "reqIds": [
+        "REQ-11"
+      ],
+      "version": 1
+    }
+  ],
+  "new_feature_requests": [
+    {
+      "id": "AR-1",
+      "summary": "Create LIA desktop voice assistant persona (female voice/name 'LIA') with user nickname 'Mj' and natural conversational interaction",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-2",
+      "summary": "Add long-term memory and conversation context across past sessions",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-3",
+      "summary": "Implement web search on demand and general concierge utilities (basic Q&A, info lookup)",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-4",
+      "summary": "Provide extensible tool/integration framework (custom tools + MCP tools)",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-5",
+      "summary": "Hindi language support with Hindi as default and high-quality Hindi TTS/voice",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-6",
+      "summary": "System control features: open any app, open websites, play YouTube videos, play music/sing song features",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-7",
+      "summary": "Camera features: enable camera view so LIA can 'see' user and user can see themselves; add camera improvements",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-8",
+      "summary": "Add anime girl model/avatar UI for LIA",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-9",
+      "summary": "Make UI mobile-friendly and auto-start/auto-open assistant when opening its website; background 'wake word' style behavior (e.g., 'Hey Google')",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-10",
+      "summary": "Phone management features (manage phone, access gallery photos/videos)",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-11",
+      "summary": "Social automation: auto message on Instagram/WhatsApp; auto post images/videos to Instagram",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-12",
+      "summary": "LLM provider integration: add Gemini API support (user requested 'free API key')",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-13",
+      "summary": "Privacy setting: remove/disable activity log",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-14",
+      "summary": "Self-healing: detect and auto-fix errors where possible",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-15",
+      "summary": "Enable voice output so LIA speaks responses (text-to-speech playback in the assistant UI)",
+      "reqIds": [],
+      "status": "pending"
+    }
+  ],
+  "gameProjectType": "none",
+  "projectName": "LIA",
+  "clarification_mode": "instant",
+  "clarification_rounds": 0
+}

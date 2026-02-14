@@ -1,0 +1,49 @@
+{
+  "kind": "implementation_plan",
+  "version": "1.0",
+  "title": "Reliable TTS playback only for new assistant messages + graceful unsupported-browser messaging",
+  "requirements": [
+    {
+      "id": "REQ-10",
+      "summary": "Trigger browser TTS only for newly generated assistant messages (not during initial history restore) and always speak only the latest assistant message by cancelling prior speech.",
+      "acceptanceCriteria": [
+        "When the app loads and restores previous conversation history, LIA does not auto-speak the last historical assistant message.",
+        "When the user sends a message and LIA produces a new assistant response, the new response is spoken via browser TTS (when TTS is enabled).",
+        "If multiple assistant messages are added quickly, only the latest message is spoken (previous speech is cancelled), and the speaking state updates correctly.",
+        "The existing 'Stop Speaking' control continues to stop current speech immediately."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Update the auto-speak effect to (1) ignore initial conversation restoration/hydration, and (2) speak only when the message list grows with a newly added assistant message. Remove any gating that prevents speaking while already speaking so the latest assistant message always triggers `speak()` (which already cancels prior speech), and track prior message length/initialization via refs to prevent TTS on history load."
+        },
+        {
+          "path": "frontend/src/hooks/speech/useSpeechSynthesis.ts",
+          "operation": "modify",
+          "description": "Harden speaking-state transitions for rapid successive calls by ensuring cancellation reliably results in a consistent `isSpeaking` state (e.g., keep current cancellation-first behavior and ensure `isSpeaking` is set to false on stop/cancel paths), so the UI reflects 'Stop Speaking' and rapid message scenarios correctly."
+        }
+      ]
+    },
+    {
+      "id": "REQ-11",
+      "summary": "Show a clear, non-blocking Settings message when Speech Synthesis is unavailable and keep the rest of the app functional without TTS runtime errors.",
+      "acceptanceCriteria": [
+        "On browsers without `window.speechSynthesis`, Settings shows an informational message that voice output is not supported.",
+        "No runtime errors occur when receiving assistant messages on unsupported browsers (messages still display normally)."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/settings/SettingsPanel.tsx",
+          "operation": "modify",
+          "description": "Adjust Settings to explicitly communicate that voice output (Speech Synthesis) is unavailable when `isSupported` is false, and make TTS-related controls (the TTS toggle and voice selection UI) clearly disabled/hidden as appropriate while keeping recognition-language and the rest of Settings usable."
+        },
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Ensure the TTS trigger path remains safe on unsupported browsers by relying on `useSpeechSynthesis().speak()` support checks and the updated 'new message only' logic, so assistant messages render normally with no Speech Synthesis calls attempted when unsupported."
+        }
+      ]
+    }
+  ]
+}

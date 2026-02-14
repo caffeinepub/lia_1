@@ -1,0 +1,66 @@
+{
+  "kind": "build_request",
+  "title": "Ensure LIA speaks assistant responses (reliable TTS trigger, not on history load)",
+  "priority": "normal",
+  "requirements": [
+    {
+      "id": "REQ-10",
+      "text": "Ensure LIA reliably speaks (text-to-speech) only for newly generated assistant responses, not when conversation history is initially loaded/restored.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-4"
+        ],
+        "quotes": [
+          "Make it voice assistant, so she also speak"
+        ]
+      },
+      "acceptanceCriteria": [
+        "When the app loads and restores previous conversation history, LIA does not auto-speak the last historical assistant message.",
+        "When the user sends a message and LIA produces a new assistant response, the new response is spoken via browser TTS (when TTS is enabled).",
+        "If multiple assistant messages are added quickly, only the latest message is spoken (previous speech is cancelled), and the speaking state updates correctly.",
+        "The existing 'Stop Speaking' control continues to stop current speech immediately."
+      ]
+    },
+    {
+      "id": "REQ-11",
+      "text": "If the browser does not support Speech Synthesis, surface a clear, non-blocking message in Settings indicating that voice output is unavailable in the current browser, while keeping the rest of the app functional.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-4"
+        ],
+        "quotes": [
+          "Make it voice assistant, so she also speak"
+        ]
+      },
+      "acceptanceCriteria": [
+        "On browsers without `window.speechSynthesis`, Settings shows an informational message that voice output is not supported.",
+        "No runtime errors occur when receiving assistant messages on unsupported browsers (messages still display normally)."
+      ]
+    }
+  ],
+  "constraints": [
+    "Do not edit files under frontend/src/hooks/useInternetIdentity.ts or .tsx, frontend/src/hooks/useActor.ts, frontend/src/main.tsx, or anything in frontend/src/components/ui (immutable paths).",
+    "Keep the backend as a single Motoko actor (no additional backend services)."
+  ],
+  "nonGoals": [
+    "Adding third-party/LLM integrations for generating assistant responses.",
+    "Adding background wake-word detection or always-on listening beyond browser constraints.",
+    "Changing the overall conversation/tool command behavior beyond ensuring TTS playback works as requested."
+  ],
+  "imageRequirements": {
+    "required": [],
+    "edits": []
+  },
+  "userProfileUpdate": {
+    "goalsToAdd": [],
+    "goalsToRemove": [],
+    "preferencesToAdd": [],
+    "preferencesToRemove": [],
+    "miscToAdd": [],
+    "miscToRemove": [],
+    "fieldsToSet": {},
+    "fieldsToDelete": []
+  }
+}

@@ -1,0 +1,47 @@
+{
+  "kind": "feature_evidence_report",
+  "features": [
+    {
+      "featureId": "feature-ensure-lia-reliably-speaks-text-to-speech-only-for-newly-generated-assistant-responses-not-when-conversation-history-is-initially-loaded-restored",
+      "featureTitle": "Ensure LIA reliably speaks (text-to-speech) only for newly generated assistant responses, not when conversation history is initially loaded/restored.",
+      "files": [
+        "frontend/src/App.tsx",
+        "frontend/src/hooks/speech/useSpeechSynthesis.ts"
+      ],
+      "components": [
+        "authorization@4.0.0",
+        "camera@1.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-10"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-if-the-browser-does-not-support-speech-synthesis-surface-a-clear-non-blocking-message-in-settings-indicating-that-voice-output-is-unavailable-in-the-current-browser-while-keeping-the-rest-of-the-app-functional",
+      "featureTitle": "If the browser does not support Speech Synthesis, surface a clear, non-blocking message in Settings indicating that voice output is unavailable in the current browser, while keeping the rest of the app functional.",
+      "files": [
+        "frontend/src/App.tsx",
+        "frontend/src/components/settings/SettingsPanel.tsx"
+      ],
+      "components": [
+        "authorization@4.0.0",
+        "camera@1.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-11"
+      ],
+      "confidence": "high"
+    }
+  ]
+}

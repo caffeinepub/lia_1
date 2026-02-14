@@ -1,0 +1,55 @@
+{
+  "kind": "coverage_report",
+  "version": "1.0",
+  "generatedAt": "2026-02-14T18:45:33.969Z",
+  "sources": {
+    "buildRequest": true,
+    "implementationPlan": true
+  },
+  "requirements": {
+    "total": 2,
+    "implemented": 2,
+    "items": [
+      {
+        "id": "REQ-10",
+        "summary": "Ensure LIA reliably speaks (text-to-speech) only for newly generated assistant responses, not when conversation history is initially loaded/restored.",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/App.tsx",
+          "frontend/src/hooks/speech/useSpeechSynthesis.ts"
+        ],
+        "matchedFiles": [
+          "frontend/src/App.tsx",
+          "frontend/src/hooks/speech/useSpeechSynthesis.ts"
+        ]
+      },
+      {
+        "id": "REQ-11",
+        "summary": "If the browser does not support Speech Synthesis, surface a clear, non-blocking message in Settings indicating that voice output is unavailable in the current browser, while keeping the rest of the app functional.",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/components/settings/SettingsPanel.tsx",
+          "frontend/src/App.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/src/components/settings/SettingsPanel.tsx",
+          "frontend/src/App.tsx"
+        ]
+      }
+    ]
+  },
+  "changedFiles": [
+    "build-request.json",
+    "build-template/README.md",
+    "feature_evidence.json",
+    "frontend-file-summaries.txt",
+    "frontend-implementation-plan.json",
+    "frontend/src/App.tsx",
+    "frontend/src/components/settings/SettingsPanel.tsx",
+    "frontend/src/hooks/speech/useSpeechSynthesis.ts",
+    "project_state.json",
+    "scratch/component-selection.json",
+    "spec.md",
+    "spec_vs_diff_report.json"
+  ]
+}
